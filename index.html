@@ -4,10 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="./js/script.js"></script>
+    <title>Метод Виженера</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/script.js" defer></script>
 </head>
 <body>
-    
+    <div class="wrapper">
+        <h1>Шифрование методом Виженера</h1>
+        <p>Ключевое слово и фраза, которую нужно зашифровать или расшифровать должны быть написаны на русском языке</p>
+        <form>
+            <div>
+                <label>Введите ключевое слово: </label>
+                <input type="text" class="keyword">
+            </div>
+            <div>
+                <label>Введите сообщение, которое хотите зашифровать или расшифровать: </label>
+                <input type="text" class="decrypt">
+            </div>
+            <div>
+                <button class="buttonsDescription">Зашифровать</button>
+                <button class="buttonsDescription">Расшифровать</button>
+                <button class="reset">Сброс</button>
+            </div>
+            <div>
+                <label>Результат: </label>
+                <input type="text" class="result" disabled>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
