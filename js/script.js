@@ -10,6 +10,7 @@ const cipherVigenere = {
   decryptMessage: [],
   keyword: [],
   n: 0,
+  isError: false,
   arrayOfRusAlphabet: [
     "А",
     "Б",
@@ -86,14 +87,20 @@ const cipherVigenere = {
   init: function () {
     buttonDecryption.addEventListener("click", (event) => {
       event.preventDefault();
-      this.decryption();
-      this.disable();
+      this.checkValues();
+      if (!this.isError) {
+        this.decryption();
+        this.disable();
+      }
     });
 
     buttonEncryption.addEventListener("click", (event) => {
       event.preventDefault();
-      this.encryption();
-      this.disable();
+      this.checkValues();
+      if (!this.isError) {
+        this.encryption();
+        this.disable();
+      }
     });
 
     buttonReset.addEventListener("click", (event) => {
@@ -101,6 +108,23 @@ const cipherVigenere = {
       this.cleanForm();
       this.unDisable();
     });
+  },
+
+  checkValues: function () {
+    this.isError = false;
+    if (keyword.value.trim() === "" || decryptMessage.value.trim() === "") {
+      this.isError = true;
+      alert("Заполните поля!");
+    }
+
+    const isNumber = function (num) {
+      return !isNaN(parseFloat(num)) && isFinite(num);
+    };
+
+    if (isNumber(keyword.value) || isNumber(decryptMessage.value)) {
+      this.isError = true;
+      alert("Числа вводить нельзя!");
+    }
   },
 
   disable: function () {
